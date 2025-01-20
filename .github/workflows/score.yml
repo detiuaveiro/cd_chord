@@ -7,10 +7,10 @@ jobs:
 
   unit_tests:
     name: Unit Tests
-    runs-on: ubuntu-latest
+    runs-on: self-hosted
 
     steps:
-      # Checks out a copy of your repository on the ubuntu-latest machine
+      # Checks out a copy of your repository on the self-hosted machine
       - name: Checkout code
         uses: actions/checkout@v3
 

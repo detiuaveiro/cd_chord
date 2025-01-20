@@ -4,7 +4,7 @@ on: push
 jobs:
   nmec:
     name: Check I created NMEC.txt
-    runs-on: ubuntu-latest
+    runs-on: self-hosted
 
     steps:
       - name: Checkout code
@@ -24,7 +24,7 @@ jobs:
 
   moss:
     name: Check my code for plagiarism
-    runs-on: ubuntu-latest
+    runs-on: self-hosted
 
     steps:
       - name: Checkout
