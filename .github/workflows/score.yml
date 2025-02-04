@@ -40,7 +40,7 @@ jobs:
 
       - name: DHT Logs
         if: ${{ failure() }}
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: DHT logs
           path: dht.txt
