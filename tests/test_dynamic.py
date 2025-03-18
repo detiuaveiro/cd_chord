@@ -1,4 +1,5 @@
 """Test dynamic nodes involving a running DHT."""
+
 import pytest
 import time
 from DHTClient import DHTClient
@@ -49,17 +50,17 @@ def test_put_keystore(node, client):
     assert node.successor_id == 654
 
     assert node.finger_table.as_list == [
-        (654, ('localhost', 5004)), 
-        (654, ('localhost', 5004)), 
-        (654, ('localhost', 5004)), 
-        (654, ('localhost', 5004)), 
-        (654, ('localhost', 5004)), 
-        (654, ('localhost', 5004)), 
-        (654, ('localhost', 5004)), 
-        (752, ('localhost', 3000)), 
-        (895, ('localhost', 6000)), 
-        (257, ('localhost', 5003))
-    ] 
+        (654, ("localhost", 5004)),
+        (654, ("localhost", 5004)),
+        (654, ("localhost", 5004)),
+        (654, ("localhost", 5004)),
+        (654, ("localhost", 5004)),
+        (654, ("localhost", 5004)),
+        (654, ("localhost", 5004)),
+        (752, ("localhost", 3000)),
+        (895, ("localhost", 6000)),
+        (257, ("localhost", 5003)),
+    ]
 
     assert node.keystore == {"10": "Aveiro"}
 
@@ -99,27 +100,26 @@ def test_actual_node_finger_table(node1, node2):
         (257, ("localhost", 5003)),
     ]
 
+
 def test_finger_table_used(client, node1, node2):
     assert node1.identification == 895
     assert node1.successor_id == 959
-
 
     assert node2.identification == 752
     assert node2.successor_id == 770
 
     assert node1.finger_table.as_list == [
-        (770, ("localhost", 5000)),
-        (770, ("localhost", 5000)),
-        (770, ("localhost", 5000)),
-        (770, ("localhost", 5000)),
-        (770, ("localhost", 5000)),
-        (895, ("localhost", 6000)),
-        (895, ("localhost", 6000)),
-        (895, ("localhost", 6000)),
+        (959, ("localhost", 5001)),
+        (959, ("localhost", 5001)),
+        (959, ("localhost", 5001)),
+        (959, ("localhost", 5001)),
+        (959, ("localhost", 5001)),
+        (959, ("localhost", 5001)),
+        (959, ("localhost", 5001)),
         (257, ("localhost", 5003)),
         (257, ("localhost", 5003)),
+        (581, ("localhost", 4000)),
     ]
-
 
     with patch.object(node1, "put", MagicMock(side_effect=node1.put)) as put1:
         with patch.object(node2, "put", MagicMock(side_effect=node2.put)) as put2:
