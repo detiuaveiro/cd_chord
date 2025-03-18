@@ -121,6 +121,19 @@ def test_finger_table_used(client, node1, node2):
         (581, ("localhost", 4000)),
     ]
 
+    assert node2.finger_table.as_list == [
+         (770, ("localhost", 5000)),
+         (770, ("localhost", 5000)),
+         (770, ("localhost", 5000)),
+         (770, ("localhost", 5000)),
+         (770, ("localhost", 5000)),
+         (895, ("localhost", 6000)),
+         (895, ("localhost", 6000)),
+         (895, ("localhost", 6000)),
+         (257, ("localhost", 5003)),
+         (257, ("localhost", 5003)),
+     ]
+
     with patch.object(node1, "put", MagicMock(side_effect=node1.put)) as put1:
         with patch.object(node2, "put", MagicMock(side_effect=node2.put)) as put2:
 
