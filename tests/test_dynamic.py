@@ -42,7 +42,7 @@ def client():
     return DHTClient(("localhost", 5000))
 
 
-def test_put_keystore(node, client):
+def test_put_keystore(server, node, client):
     assert client.put("10", "Aveiro")
 
     assert node.predecessor_id == 260
@@ -65,7 +65,7 @@ def test_put_keystore(node, client):
     assert node.keystore == {"10": "Aveiro"}
 
 
-def test_actual_node_finger_table(node1, node2):
+def test_actual_node_finger_table(server, node1, node2):
     assert node1.identification == 895
     assert node1.successor_id == 959
 
@@ -101,7 +101,7 @@ def test_actual_node_finger_table(node1, node2):
     ]
 
 
-def test_finger_table_used(client, node1, node2):
+def test_finger_table_used(server, client, node1, node2):
     assert node1.identification == 895
     assert node1.successor_id == 959
 
